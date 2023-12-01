@@ -3,8 +3,9 @@ import foods from "../data/data";
 export default function ResultsList({ query }) {
 
   const list = () => {
-    const search = new RegExp(query, "i");
-    const filteredList = foods.filter((food) => food.name.match(search));
+    const filteredList = foods.filter((food) => 
+      food.name.toLowerCase().includes(query.toLowerCase())
+    );
 
     if (query == "") return foods;
     else return filteredList;
